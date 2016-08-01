@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/10/nuspec.xsd">
+    <metadata>
+        <id>PersistentMemoryCache</id>
+        <version>1.0.0.0-Beta</version>
+        <authors>Joel Weiss</authors>
+        <licenseUrl>http://www.apache.org/licenses/LICENSE-2.0</licenseUrl>
+        <projectUrl>https://github.com/joelweiss/PersistentMemoryCache</projectUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>Persistent Memory Cache, caches in Memory but also to Disk, so cache is persistent across restarts, build on Top of "Microsoft.Extensions.Caching.Abstractions" and "LiteDb"</description>
+        <language>en-US</language>
+        <tags>Memory Cache DbLite</tags>
+        <dependencies>
+            <dependency id="LiteDb" version="2.0.4" />
+            <dependency id="Microsoft.Extensions.Caching.Abstractions" version="1.1.0" />
+        </dependencies>
+    </metadata>
+    <files>
+        <file src="..\Source\PersistentMemoryCache\bin\Release\PersistentMemoryCache.dll" target="lib\net45\PersistentMemoryCache.dll" />
+    </files>
+</package>
