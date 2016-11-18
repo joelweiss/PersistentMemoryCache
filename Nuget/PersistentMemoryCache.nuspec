@@ -7,11 +7,11 @@
         <licenseUrl>http://www.apache.org/licenses/LICENSE-2.0</licenseUrl>
         <projectUrl>https://github.com/joelweiss/PersistentMemoryCache</projectUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
-        <description>Persistent Memory Cache, caches in Memory but also to Disk, so cache is persistent across restarts, build on Top of "Microsoft.Extensions.Caching.Abstractions" and "LiteDb"</description>
+        <description>Persistent Memory Cache, caches in Memory but also to Disk, so cache is persistent across restarts, build on Top of "Microsoft.Extensions.Caching.Abstractions" and "LiteDB"</description>
         <language>en-US</language>
-        <tags>Memory Cache DbLite</tags>
+        <tags>Memory Cache LiteDB</tags>
         <dependencies>
-            <dependency id="LiteDb" version="2.0.4" />
+            <dependency id="LiteDB" version="2.0.4" />
             <dependency id="Microsoft.Extensions.Caching.Abstractions" version="1.1.0" />
         </dependencies>
     </metadata>
