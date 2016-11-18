@@ -11,7 +11,7 @@ PM> Install-Package PersistentMemoryCache -Pre
 ```
 # Example
 ```csharp
-IMemoryCache cache = new PersistentMemoryCache(new PersistentMemoryCacheOptions("Test", new LiteDbStore(new LiteDbOptions { FileName = "Test.db" })));
+IMemoryCache cache = new PersistentMemoryCache(new PersistentMemoryCacheOptions("Test", new LiteDbStore(new LiteDbOptions("Test.db"))));
 
 string key = "TestKey";
 string value = "TestValue";

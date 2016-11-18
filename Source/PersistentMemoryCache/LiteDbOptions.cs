@@ -2,6 +2,11 @@
 {
     public class LiteDbOptions
     {
-        public string FileName { get; set; }
+        public LiteDbOptions(string fileName)
+        {
+            FileName = fileName;
+        }
+
+        public string FileName { get; }
     }
 }

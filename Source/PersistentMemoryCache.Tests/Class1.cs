@@ -13,13 +13,13 @@ namespace PersistentMemoryCache.Tests
         [Fact]
         public void Foo()
         {
-            IMemoryCache cache = new PersistentMemoryCache(new PersistentMemoryCacheOptions("Test", new LiteDbStore(new LiteDbOptions { FileName = "Test.db" })));
+            IMemoryCache cache = new PersistentMemoryCache(new PersistentMemoryCacheOptions("Test", new LiteDbStore(new LiteDbOptions("Test.db"))));
             string key = "TestKey";
             string value = "TestValue";
             cache.Set(key, value);
             cache.Dispose();
             cache = null;
-            cache = new PersistentMemoryCache(new PersistentMemoryCacheOptions("Test", new LiteDbStore(new LiteDbOptions { FileName = "Test.db" })));
+            cache = new PersistentMemoryCache(new PersistentMemoryCacheOptions("Test", new LiteDbStore(new LiteDbOptions("Test.db"))));
 
 
             var ret = cache.Get(key);
