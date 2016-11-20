@@ -6,7 +6,11 @@ namespace PersistentMemoryCache
     {
         public LiteDbOptions(string fileName)
         {
-            FileName = fileName ?? throw new ArgumentNullException(nameof(fileName));
+            if (fileName == null)
+            {
+                throw new ArgumentNullException(nameof(fileName));
+            }
+            FileName = fileName;
         }
 
         public string FileName { get; }
