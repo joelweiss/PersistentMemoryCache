@@ -21,7 +21,7 @@ namespace PersistentMemoryCache.Internal
         }
 
         /// <summary>
-        /// Starts LiteDB database using a connection string for filesystem database
+        /// Starts LiteDB database using a connection string for file system database
         /// </summary>
         internal PersistentLiteDatabase(string connectionString, BsonMapper mapper = null) : base(connectionString, mapper)
         {

@@ -14,8 +14,8 @@ namespace PersistentMemoryCache
             _FileName = options.FileName;
             using (var db = new PersistentLiteDatabase(_FileName))
             {
-                var colection = db.GetCollection<Internal.LiteDbCacheEntry>("PersistedCacheEntry");
-                colection.EnsureIndex(pce => pce.CacheName);
+                var collection = db.GetCollection<Internal.LiteDbCacheEntry>("PersistedCacheEntry");
+                collection.EnsureIndex(pce => pce.CacheName);
             }
         }
 
@@ -23,17 +23,17 @@ namespace PersistentMemoryCache
         {
             using (var db = new PersistentLiteDatabase(_FileName))
             {
-                var colection = db.GetCollection<Internal.LiteDbCacheEntry>("PersistedCacheEntry");
-                return colection.Insert(entry).AsInt32;
+                var collection = db.GetCollection<Internal.LiteDbCacheEntry>("PersistedCacheEntry");
+                return collection.Insert(entry).AsInt32;
             }
         }
 
-        public List<Internal.LiteDbCacheEntry> LoadEntrys(string cacheName)
+        public List<Internal.LiteDbCacheEntry> LoadEntries(string cacheName)
         {
             using (var db = new PersistentLiteDatabase(_FileName))
             {
-                var colection = db.GetCollection<Internal.LiteDbCacheEntry>("PersistedCacheEntry");
-                return colection.Find(pce => pce.CacheName == cacheName).ToList();
+                var collection = db.GetCollection<Internal.LiteDbCacheEntry>("PersistedCacheEntry");
+                return collection.Find(pce => pce.CacheName == cacheName).ToList();
             }
         }
 
@@ -41,8 +41,8 @@ namespace PersistentMemoryCache
         {
             using (var db = new PersistentLiteDatabase(_FileName))
             {
-                var colection = db.GetCollection<Internal.LiteDbCacheEntry>("PersistedCacheEntry");
-                return colection.FindById(new BsonValue(key));
+                var collection = db.GetCollection<Internal.LiteDbCacheEntry>("PersistedCacheEntry");
+                return collection.FindById(new BsonValue(key));
             }
         }
 
@@ -50,8 +50,8 @@ namespace PersistentMemoryCache
         {
             using (var db = new PersistentLiteDatabase(_FileName))
             {
-                var colection = db.GetCollection<Internal.LiteDbCacheEntry>("PersistedCacheEntry");
-                return colection.Update(new BsonValue(key), entry);
+                var collection = db.GetCollection<Internal.LiteDbCacheEntry>("PersistedCacheEntry");
+                return collection.Update(new BsonValue(key), entry);
             }
         }
 
@@ -59,8 +59,8 @@ namespace PersistentMemoryCache
         {
             using (var db = new LiteDatabase(_FileName))
             {
-                var colection = db.GetCollection<Internal.LiteDbCacheEntry>("PersistedCacheEntry");
-                colection.Delete(new BsonValue(id));
+                var collection = db.GetCollection<Internal.LiteDbCacheEntry>("PersistedCacheEntry");
+                collection.Delete(new BsonValue(id));
             }
         }
     }

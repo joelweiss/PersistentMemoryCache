@@ -63,7 +63,7 @@ namespace PersistentMemoryCache
             try
             {
                 _IsReloadingFromStore = true;
-                List<Internal.LiteDbCacheEntry> persistentCacheEntries = _Options.PersistentStore.LoadEntrys(_Options.CacheName);
+                List<Internal.LiteDbCacheEntry> persistentCacheEntries = _Options.PersistentStore.LoadEntries(_Options.CacheName);
                 foreach (Internal.LiteDbCacheEntry persistentCacheEntry in persistentCacheEntries)
                 {
                     using (PersistentCacheEntry cacheEntry = (PersistentCacheEntry)CreateEntry(persistentCacheEntry.Key))
