@@ -70,7 +70,7 @@ namespace PersistentMemoryCache
                     {
                         cacheEntry.PersistentStoreId = persistentCacheEntry.Id;
                         cacheEntry.Priority = persistentCacheEntry.Priority;
-                        cacheEntry.Value = persistentCacheEntry.Value;
+                        cacheEntry.Value = persistentCacheEntry.GetValue();
                         cacheEntry.LastAccessed = persistentCacheEntry.LastAccessed;
                         cacheEntry.AbsoluteExpiration = persistentCacheEntry.AbsoluteExpiration;
                         cacheEntry.SlidingExpiration = persistentCacheEntry.SlidingExpiration;
@@ -196,16 +196,16 @@ namespace PersistentMemoryCache
 
         private LiteDbCacheEntry CreateLiteDbEntryFromPersistentEntry(PersistentCacheEntry entry)
         {
-            return new Internal.LiteDbCacheEntry
-            {
-                CacheName = _Options.CacheName,
-                Priority = entry.Priority,
-                Key = entry.Key,
-                Value = entry.Value,
-                LastAccessed = entry.LastAccessed,
-                AbsoluteExpiration = entry.AbsoluteExpiration,
-                SlidingExpiration = entry.SlidingExpiration
-            };
+            Type cacheValueType = entry.Value?.GetType() ?? typeof(object);
+            LiteDbCacheEntry liteDbEntry = LiteDbCacheEntry.ConstructCacheEntry(cacheValueType);
+            liteDbEntry.CacheName = _Options.CacheName;
+            liteDbEntry.Priority = entry.Priority;
+            liteDbEntry.Key = entry.Key;
+            liteDbEntry.LastAccessed = entry.LastAccessed;
+            liteDbEntry.AbsoluteExpiration = entry.AbsoluteExpiration;
+            liteDbEntry.SlidingExpiration = entry.SlidingExpiration;
+            liteDbEntry.SetValue(entry.Value);
+            return liteDbEntry;
         }
 
         public bool TryGetValue(object key, out object result)
