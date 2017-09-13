@@ -1,18 +1,11 @@
 version: 1.0.{build}
 configuration: Release
-assembly_info:
+dotnet_csproj:
   patch: true
-  file: AssemblyInfo.*
-  assembly_version: '{version}'
-  assembly_file_version: '{version}'
-  assembly_informational_version: '{version}'
-before_build:
-- ps: nuget restore Source\PersistentMemoryCache.sln
+  file: '**\*.csproj'
+  version: '{version}'
+  package_version: '{version}'
 build:
   project: Source\PersistentMemoryCache.sln
+  publish_nuget: true
   verbosity: minimal
-after_build:
-- ps: >-
-    nuget pack Nuget\PersistentMemoryCache.nuspec -Version $env:APPVEYOR_BUILD_VERSION-Beta
-
-    appveyor PushArtifact PersistentMemoryCache.$env:APPVEYOR_BUILD_VERSION-Beta.nupkg

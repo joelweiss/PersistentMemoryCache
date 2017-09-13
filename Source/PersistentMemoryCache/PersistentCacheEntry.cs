@@ -1,9 +1,3 @@
-#if NETSTANDARD1_3
-#else
-using System.Runtime.Remoting;
-using System.Runtime.Remoting.Messaging;
-#endif
-
 using System;
 using System.Collections.Generic;
 using System.Threading;
@@ -204,6 +198,8 @@ namespace PersistentMemoryCache
         }
 
         internal int? PersistentStoreId { get; set; }
+
+        public long? Size { get; set; }
 
         public void Dispose()
         {
