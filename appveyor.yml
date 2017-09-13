@@ -9,7 +9,7 @@ dotnet_csproj:
   version: '{version}'
   package_version: '{version}'
 before_build:
-- ps: dotnet restore
+- ps: dotnet restore Source\PersistentMemoryCache.sln
 build:
   project: Source\PersistentMemoryCache.sln
   publish_nuget: true
