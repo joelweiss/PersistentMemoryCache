@@ -8,6 +8,8 @@ dotnet_csproj:
   file: '**\PersistentMemoryCache.csproj'
   version: '{version}'
   package_version: '{version}'
+before_build:
+- ps: dotnet restore
 build:
   project: Source\PersistentMemoryCache.sln
   publish_nuget: true
