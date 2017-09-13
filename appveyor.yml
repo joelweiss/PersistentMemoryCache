@@ -1,8 +1,11 @@
 version: 1.0.{build}
 configuration: Release
+pull_requests:
+  do_not_increment_build_number: true
+image: Previous Visual Studio 2017
 dotnet_csproj:
   patch: true
-  file: '**\*.csproj'
+  file: '**\PersistentMemoryCache.csproj'
   version: '{version}'
   package_version: '{version}'
 build:
